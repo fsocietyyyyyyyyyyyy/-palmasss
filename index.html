@@ -130,6 +130,7 @@
             opacity: 0.9;
         }
 
+        /* Поиск и категории */
         .controls-wrapper {
             background: rgba(8, 25, 15, 0.45);
             backdrop-filter: blur(20px);
@@ -137,7 +138,7 @@
             border: 1.5px solid rgba(46, 204, 113, 0.2);
             border-radius: 32px;
             padding: 24px;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             box-shadow: var(--cloud-shadow);
         }
 
@@ -209,6 +210,101 @@
             box-shadow: 0 8px 20px rgba(46, 204, 113, 0.35);
         }
 
+        /* Секция интерактивного калькулятора */
+        .calculator-box {
+            background: rgba(10, 32, 19, 0.7);
+            border: 2px dashed var(--primary-green);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 50px;
+            box-shadow: var(--cloud-shadow);
+        }
+
+        .calculator-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .calculator-header i {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+        }
+
+        .calculator-header h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .calc-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .calc-stats {
+            display: flex;
+            gap: 30px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-value span {
+            color: var(--primary-green);
+        }
+
+        .calc-action {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .calc-btn {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-emerald) 100%);
+            border: none;
+            color: #030f08;
+            padding: 14px 20px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--spring-transition);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.2);
+        }
+
+        .calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+        }
+
+        /* Заголовки */
         .section-header {
             display: flex;
             align-items: center;
@@ -239,6 +335,7 @@
             gap: 25px;
         }
 
+        /* Облачная карточка */
         .rule-card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -271,6 +368,48 @@
             box-shadow: 0 15px 35px rgba(46, 204, 113, 0.2), var(--cloud-shadow);
         }
 
+        /* Чекбокс для калькулятора */
+        .card-checkbox {
+            position: absolute;
+            top: 22px;
+            right: 55px;
+            z-index: 10;
+            display: none; /* Покажем только для IC, Road и AC разделов */
+        }
+
+        .rule-card[data-calc-id] .card-checkbox {
+            display: block;
+        }
+
+        .custom-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--card-border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--smooth-transition);
+            background: rgba(0,0,0,0.3);
+        }
+
+        .rule-card.selected-for-calc .custom-checkbox {
+            background: var(--primary-green);
+            border-color: var(--primary-green);
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+        }
+
+        .custom-checkbox i {
+            color: #030f08;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: var(--smooth-transition);
+        }
+
+        .rule-card.selected-for-calc .custom-checkbox i {
+            opacity: 1;
+        }
+
         .card-main-header {
             display: flex;
             align-items: center;
@@ -282,6 +421,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            max-width: 80%;
         }
 
         .bubble-icon {
@@ -297,6 +437,7 @@
             color: var(--primary-green);
             box-shadow: inset 0 0 10px rgba(46, 204, 113, 0.1);
             transition: var(--spring-transition);
+            flex-shrink: 0;
         }
 
         .rule-card:hover .bubble-icon {
@@ -323,6 +464,9 @@
             font-size: 1.15rem;
             font-weight: 800;
             color: #ffffff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .card-arrow {
@@ -335,6 +479,7 @@
             justify-content: center;
             color: var(--text-muted);
             transition: var(--spring-transition);
+            flex-shrink: 0;
         }
 
         .rule-card.active {
@@ -575,6 +720,8 @@
             .brand-name { font-size: 2.3rem; }
             .brand-subtitle { font-size: 0.75rem; letter-spacing: 8px; }
             .rules-grid { grid-template-columns: 1fr; }
+            .calc-body { flex-direction: column; align-items: stretch; }
+            .calc-stats { justify-content: space-around; }
         }
     </style>
 </head>
@@ -596,6 +743,36 @@
                 </div>
             </div>
         </header>
+
+        <!-- Калькулятор наказаний для суда и полиции -->
+        <div class="calculator-box">
+            <div class="calculator-header">
+                <i class="fa-solid fa-calculator"></i>
+                <h3>Судебный калькулятор Palmas RP</h3>
+            </div>
+            <div class="calc-body">
+                <div class="calc-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Итоговый Штраф</span>
+                        <div class="stat-value"><span id="calcFine">0</span> €</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Срок Ареста</span>
+                        <div class="stat-value"><span id="calcTime">0</span> мин</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Личные вещи</span>
+                        <div class="stat-value" id="calcItems" style="font-size: 1rem; margin-top: 8px; color: var(--text-muted); font-weight: 600;">Не изымаются</div>
+                    </div>
+                </div>
+                <div class="calc-action">
+                    <button class="calc-btn" onclick="copyCalculatedSentence()">
+                        <i class="fa-solid fa-file-invoice"></i> Скопировать приговор для чата
+                    </button>
+                    <span style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">*Кликните на чекбокс на карточке правила, чтобы добавить статью к приговору.</span>
+                </div>
+            </div>
+        </div>
 
         <div class="controls-wrapper">
             <div class="search-box">
@@ -928,6 +1105,34 @@
                         </div>
                     </div>
 
+                    <!-- НОВОЕ ПРАВИЛО: RK -->
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="rk revenge kill рк месть смерть убийство возвращение">
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">п.п 1.12</span>
+                                    <span class="front-title">RK (Revenge Kill)</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Запрещено убивать игрока в отместку за то, что он убил вас ранее. Ваш персонаж полностью забывает обстоятельства своей смерти.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Наказание администрации</span>
+                                        <span class="punish-text">Предупреждение (Варн) / Кик / Повторно: Бан на 1 день</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('п.п 1.12 RK', 'Нарушение правила Revenge Kill (Месть после смерти). Наказание: Варн / Кик.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -939,7 +1144,10 @@
                 </div>
                 <div class="rules-grid">
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 1.1 нападение драка избиение ст 1.1">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="uk-1-1" data-fine="2000" data-time="3" data-items="0" data-search="статья 1.1 нападение драка избиение ст 1.1">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-hand-fist"></i></div>
@@ -966,7 +1174,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 1.2 вооруженное нападение стрельба ст 1.2 изъятие оружия вещей при себе">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="uk-1-2" data-fine="5000" data-time="8" data-items="1" data-search="статья 1.2 вооруженное нападение стрельба ст 1.2 изъятие оружия вещей при себе">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-gun"></i></div>
@@ -993,7 +1204,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 1.3 убийство лишение жизни ст 1.3 пальмас">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="uk-1-3" data-fine="8000" data-time="10" data-items="1" data-search="статья 1.3 убийство лишение жизни ст 1.3 пальмас">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-skull-crossbones"></i></div>
@@ -1020,7 +1234,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 1.5 насилие издевательство жестокость ст 1.5">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="uk-1-5" data-fine="6000" data-time="6" data-items="0" data-search="статья 1.5 насилие издевательство жестокость ст 1.5">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-shield-heart"></i></div>
@@ -1047,7 +1264,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 3.1 неподчинение копам полиции ст 3.1">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="uk-3-1" data-fine="1500" data-time="3" data-items="0" data-search="статья 3.1 неподчинение копам полиции ст 3.1">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-hand"></i></div>
@@ -1074,7 +1294,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 3.3 нелегальное оружие оружие без лицензии ст 3.3 изъятие оружия вещей">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="uk-3-3" data-fine="5500" data-time="5" data-items="1" data-search="статья 3.3 нелегальное оружие оружие без лицензии ст 3.3 изъятие оружия вещей">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-box-tissue"></i></div>
@@ -1101,6 +1324,68 @@
                         </div>
                     </div>
 
+                    <!-- НОВАЯ СТАТЬЯ: ПРОНИКНОВЕНИЕ -->
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="uk-3-5" data-fine="3000" data-time="4" data-items="0" data-search="статья 3.5 проникновение охраняемая территория закрытая ст 3.5">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-building-lock"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 3.5 УК</span>
+                                    <span class="front-title">Проникновение</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Незаконное проникновение на частную территорию, охраняемые государственные или режимные объекты города Пальмас.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Суд & Полиция</span>
+                                        <span class="punish-text">Штраф 3 000 € + арест на 4 минуты</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 3.5 УК (Проникновение)', 'Вторжение на закрытые объекты Пальмаса. Штраф 3 000€ + арест 4 минуты.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- НОВАЯ СТАТЬЯ: ВЗЯТКА -->
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="uk-3-6" data-fine="4500" data-time="5" data-items="1" data-search="статья 3.6 взятка взятки подкуп полиция коррупция ст 3.6">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                        </div>
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-briefcase"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 3.6 УК</span>
+                                    <span class="front-title">Дача взятки</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Попытка устного или денежного подкупа должностных лиц Пальмаса (полицейских, судей, медиков) во избежание ответственности.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Суд & Полиция</span>
+                                        <span class="punish-text">Штраф 4 500 € + арест на 5 минут + изъятие средств подкупа и всех личных вещей</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 3.6 УК (Дача взятки)', 'Попытка подкупа должностного лица. Штраф 4 500€ + арест на 5 мин + конфискация вещей.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -1112,7 +1397,10 @@
                 </div>
                 <div class="rules-grid">
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.1 скорость опасная езда дрифт ст 4.1">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="dk-4-1" data-fine="1000" data-time="0" data-items="0" data-search="статья 4.1 скорость опасная езда дрифт ст 4.1">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-gauge-high"></i></div>
@@ -1139,7 +1427,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.2 встречка тротуар ст 4.2">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="dk-4-2" data-fine="2000" data-time="0" data-items="0" data-search="статья 4.2 встречка тротуар ст 4.2">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-road-barrier"></i></div>
@@ -1166,7 +1457,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.3 парковка в неположенном ст 4.3">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="dk-4-3" data-fine="800" data-time="0" data-items="0" data-search="статья 4.3 парковка в неположенном ст 4.3">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-square-parking"></i></div>
@@ -1193,7 +1487,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.4 спецсигналы мигалки сирена ст 4.4">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="dk-4-4" data-fine="3000" data-time="0" data-items="0" data-search="статья 4.4 спецсигналы мигалки сирена ст 4.4">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-lightbulb"></i></div>
@@ -1220,7 +1517,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.5 неисправное тс фары ночь разбито авто сломано ст 4.5">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="dk-4-5" data-fine="1200" data-time="0" data-items="0" data-search="статья 4.5 неисправное тс фары ночь разбито авто сломано ст 4.5">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-wrench"></i></div>
@@ -1247,7 +1547,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.6 без номеров номера нечитаемые знаки ст 4.6">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="dk-4-6" data-fine="1500" data-time="0" data-items="0" data-search="статья 4.6 без номеров номера нечитаемые знаки ст 4.6">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-id-card"></i></div>
@@ -1274,7 +1577,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.7 скрытие дтп скрылся аварии авария ст 4.7">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="dk-4-7" data-fine="3500" data-time="0" data-items="0" data-search="статья 4.7 скрытие дтп скрылся аварии авария ст 4.7">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-car-crash"></i></div>
@@ -1301,7 +1607,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.8 без прав вождение права забрали ст 4.8">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="dk-4-8" data-fine="2500" data-time="0" data-items="0" data-search="статья 4.8 без прав вождение права забрали ст 4.8">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-address-card"></i></div>
@@ -1328,6 +1637,68 @@
                         </div>
                     </div>
 
+                    <!-- НОВОЕ ПРАВИЛО: РАЗГОВОР ПО ТЕЛЕФОНУ -->
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="dk-4-9" data-fine="1500" data-time="0" data-items="0" data-search="статья 4.9 телефон телефон за рулем звонок мобильный ст 4.9">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-mobile-button"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 4.9 ДК</span>
+                                    <span class="front-title">Разговор по тел.</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Использование мобильного телефона или рации без гарнитуры "hands-free" во время вождения ТС.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Административный штраф</span>
+                                        <span class="punish-text">Штраф 1 500 €</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 4.9 ДК (Разговор за рулем)', 'Разговоры по телефону во время движения. Штраф 1 500€.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- НОВОЕ ПРАВИЛО: БЕЗ ШЛЕМА -->
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="dk-4-10" data-fine="1000" data-time="0" data-items="0" data-search="статья 4.10 без шлема мотоцикл скутер мопед ст 4.10">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-hard-hat"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 4.10 ДК</span>
+                                    <span class="front-title">Без шлема</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Управление мотоциклом, скутером или квадроциклом без защитного мотоциклетного шлема.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Административный штраф</span>
+                                        <span class="punish-text">Штраф 1 000 €</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 4.10 ДК (Без шлема)', 'Управление мотоциклом без шлема. Штраф 1 000€.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -1339,7 +1710,10 @@
                 </div>
                 <div class="rules-grid">
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 5.1 тишина ночное время крики шум ст 5.1">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="ac-5-1" data-fine="1200" data-time="0" data-items="0" data-search="статья 5.1 тишина ночное время крики шум ст 5.1">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-volume-xmark"></i></div>
@@ -1366,7 +1740,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 5.2 хулиганство ложные вызовы полиция медики мчс ст 5.2 пальмас">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="ac-5-2" data-fine="2000" data-time="0" data-items="0" data-search="статья 5.2 хулиганство ложные вызовы полиция медики мчс ст 5.2 пальмас">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-phone-slash"></i></div>
@@ -1393,7 +1770,10 @@
                         </div>
                     </div>
 
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 5.3 незаконная торговля продажи ларек лавка ст 5.3">
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="ac-5-3" data-fine="3000" data-time="0" data-items="0" data-search="статья 5.3 незаконная торговля продажи ларек лавка ст 5.3">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-store-slash"></i></div>
@@ -1413,6 +1793,37 @@
                                         <span class="punish-text">Штраф 3 000 € + демонтаж незаконной торговой точки</span>
                                     </div>
                                     <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 5.3 АК (Нелегальная торговля)', 'Продажи товаров без соответствующей лицензии. Штраф 3 000€.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- НОВОЕ ПРАВИЛО: ВАНДАЛИЗМ -->
+                    <div class="rule-card" onclick="toggleCard(this)" data-calc-id="ac-5-4" data-fine="1500" data-time="0" data-items="0" data-search="статья 5.4 вандализм мусор порча стен граффити ст 5.4">
+                        <div class="card-checkbox" onclick="event.stopPropagation(); toggleCalcSelection(this.parentNode)">
+                            <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+                        </div>
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-trash-can"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 5.4 АК</span>
+                                    <span class="front-title">Вандализм</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Разбрасывание мусора в общественных местах города Пальмас, а также нанесение граффити на стены и порча уличного декора.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Административный штраф</span>
+                                        <span class="punish-text">Штраф 1 500 € + уборка территории</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 5.4 АК (Вандализм)', 'Нарушение чистоты и вандализм в Пальмасе. Штраф 1 500€.')" title="Скопировать">
                                         <i class="fa-regular fa-copy"></i>
                                     </button>
                                 </div>
@@ -1457,6 +1868,9 @@
     </div>
 
     <script>
+        /* Хранилище выбранных для калькулятора статей */
+        let selectedArticles = {};
+
         /* Копирование законов */
         function copyLaw(title, details) {
             const textToCopy = `[PALMAS RP] Суд/Полиция: Нарушено ${title}. Информация: ${details}`;
@@ -1498,6 +1912,100 @@
             } else {
                 card.classList.add('active');
             }
+        }
+
+        /* Логика калькулятора */
+        function toggleCalcSelection(card) {
+            const calcId = card.getAttribute('data-calc-id');
+            const fine = parseInt(card.getAttribute('data-fine') || 0);
+            const time = parseInt(card.getAttribute('data-time') || 0);
+            const items = parseInt(card.getAttribute('data-items') || 0);
+            const code = card.querySelector('.front-code').innerText;
+            const title = card.querySelector('.front-title').innerText;
+
+            if (card.classList.contains('selected-for-calc')) {
+                card.classList.remove('selected-for-calc');
+                delete selectedArticles[calcId];
+            } else {
+                card.classList.add('selected-for-calc');
+                selectedArticles[calcId] = { code, title, fine, time, items };
+            }
+
+            updateCalculator();
+        }
+
+        function updateCalculator() {
+            let totalFine = 0;
+            let totalTime = 0;
+            let needsConfiscation = false;
+
+            for (let id in selectedArticles) {
+                totalFine += selectedArticles[id].fine;
+                totalTime += selectedArticles[id].time;
+                if (selectedArticles[id].items === 1) {
+                    needsConfiscation = true;
+                }
+            }
+
+            // Ограничение по штрафам до 8 000 евро
+            if (totalFine > 8000) totalFine = 8000;
+
+            document.getElementById('calcFine').innerText = totalFine;
+            document.getElementById('calcTime').innerText = totalTime;
+
+            const itemsLabel = document.getElementById('calcItems');
+            if (needsConfiscation) {
+                itemsLabel.innerText = "ИЗЫМАЮТСЯ ВСЕ ВЕЩИ";
+                itemsLabel.style.color = "#e74c3c";
+            } else {
+                itemsLabel.innerText = "Не изымаются";
+                itemsLabel.style.color = "var(--text-muted)";
+            }
+        }
+
+        function copyCalculatedSentence() {
+            const articlesList = Object.values(selectedArticles);
+            if (articlesList.length === 0) {
+                const tempInput = document.createElement('textarea');
+                tempInput.value = "[PALMAS RP] Судья: Нарушений не выявлено, гражданин чист перед законом.";
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                showToast();
+                return;
+            }
+
+            const fine = document.getElementById('calcFine').innerText;
+            const time = document.getElementById('calcTime').innerText;
+            const items = document.getElementById('calcItems').innerText;
+
+            const codesStr = articlesList.map(a => a.code).join(', ');
+            let sentenceText = `[PALMAS RP] Приговор: На основании нарушений (${codesStr}) вам выносится штраф ${fine} €`;
+            if (parseInt(time) > 0) {
+                sentenceText += ` и лишение свободы на ${time} минут.`;
+            } else {
+                sentenceText += `.`;
+            }
+            if (items.includes("ИЗЫМАЮТСЯ")) {
+                sentenceText += ` Всё оружие и личные вещи подлежат полной конфискации!`;
+            }
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = sentenceText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast();
+        }
+
+        function showToast() {
+            const toast = document.getElementById('copyToast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         }
 
         /* Снегопад */
