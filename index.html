@@ -22,7 +22,6 @@
             --text-main: #f3f4f6;
             --text-muted: #a3b899;
             --cloud-shadow: 0 15px 35px rgba(0, 0, 0, 0.45), inset 0 0 20px rgba(255, 255, 255, 0.03);
-            /* Мягкая кинетическая кривая для анимаций */
             --smooth-transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             --spring-transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
@@ -42,7 +41,6 @@
             position: relative;
         }
 
-        /* Фоновый снег на Canvas */
         #snow-canvas {
             position: fixed;
             top: 0;
@@ -61,7 +59,6 @@
             padding: 40px 20px 80px;
         }
 
-        /* Логотип */
         header {
             display: flex;
             flex-direction: column;
@@ -133,7 +130,6 @@
             opacity: 0.9;
         }
 
-        /* Поиск и категории */
         .controls-wrapper {
             background: rgba(8, 25, 15, 0.45);
             backdrop-filter: blur(20px);
@@ -213,7 +209,6 @@
             box-shadow: 0 8px 20px rgba(46, 204, 113, 0.35);
         }
 
-        /* Заголовки */
         .section-header {
             display: flex;
             align-items: center;
@@ -238,14 +233,12 @@
             color: var(--primary-green);
         }
 
-        /* Сетки правил */
         .rules-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 25px;
         }
 
-        /* РАСКРЫВАЮЩАЯСЯ КАРТОЧКА-ОБЛАЧКО */
         .rule-card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -261,11 +254,9 @@
             position: relative;
             overflow: hidden;
             height: fit-content;
-            /* Плавное парение в пространстве */
             animation: floatCard 6s ease-in-out infinite;
         }
 
-        /* Смещение таймингов покачивания, чтобы облака плыли асинхронно */
         .rule-card:nth-child(2n) { animation-delay: 1.5s; }
         .rule-card:nth-child(3n) { animation-delay: 3s; }
 
@@ -280,7 +271,6 @@
             box-shadow: 0 15px 35px rgba(46, 204, 113, 0.2), var(--cloud-shadow);
         }
 
-        /* Шапка карточки (Всегда видна) */
         .card-main-header {
             display: flex;
             align-items: center;
@@ -360,7 +350,6 @@
             box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
         }
 
-        /* CSS Grid Ультра-плавное авто-раскрытие */
         .card-expanded-content {
             display: grid;
             grid-template-rows: 0fr;
@@ -396,7 +385,6 @@
             margin-bottom: 18px;
         }
 
-        /* Панель действий в раскрытой части */
         .card-action-bar {
             display: flex;
             align-items: center;
@@ -452,7 +440,97 @@
             border-color: transparent;
         }
 
-        /* Всплывающий тост */
+        /* БЛОК МИРАНДЫ В САМОМ НИЗУ */
+        .miranda-wrapper {
+            margin-top: 60px;
+            background: linear-gradient(135deg, rgba(6, 28, 15, 0.7) 0%, rgba(2, 12, 6, 0.9) 100%);
+            border: 2px solid #1abc9c;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px rgba(26, 188, 156, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .miranda-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-emerald);
+        }
+
+        .miranda-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .miranda-header i {
+            font-size: 1.8rem;
+            color: var(--accent-emerald);
+        }
+
+        .miranda-header h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .miranda-body {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #e5e7eb;
+            font-style: italic;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .miranda-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .miranda-hint {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .miranda-copy-btn {
+            background: linear-gradient(135deg, var(--accent-emerald) 0%, #16a085 100%);
+            color: #030f08;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--spring-transition);
+            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.3);
+        }
+
+        .miranda-copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(26, 188, 156, 0.5);
+        }
+
         .toast {
             position: fixed;
             bottom: 30px;
@@ -480,7 +558,6 @@
             font-size: 1.2rem;
         }
 
-        /* Подвал */
         footer {
             text-align: center;
             margin-top: 80px;
@@ -494,7 +571,6 @@
             color: var(--primary-green);
         }
 
-        /* Адаптивность */
         @media (max-width: 768px) {
             .brand-name { font-size: 2.3rem; }
             .brand-subtitle { font-size: 0.75rem; letter-spacing: 8px; }
@@ -504,11 +580,9 @@
 </head>
 <body>
 
-    <!-- Фоновый Canvas со снежинками -->
     <canvas id="snow-canvas"></canvas>
 
     <div class="container">
-        <!-- Шапка -->
         <header>
             <div class="logo-container">
                 <div class="emblem">
@@ -523,7 +597,6 @@
             </div>
         </header>
 
-        <!-- Поиск и категории -->
         <div class="controls-wrapper">
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -542,13 +615,15 @@
                 <button class="tab-btn" data-filter="road">
                     <i class="fa-solid fa-car-side"></i> Дорожный Кодекс
                 </button>
+                <button class="tab-btn" data-filter="ac">
+                    <i class="fa-solid fa-shield-halved"></i> Адм. Кодекс (АК)
+                </button>
             </div>
         </div>
 
-        <!-- Контент с правилами -->
         <div id="rulesContainer">
             
-            <!-- РАЗДЕЛ: OOC ПРАВИЛА -->
+            <!-- РАЗДЕЛ 1: OOC ПРАВИЛА -->
             <div class="section-block" data-category="ooc">
                 <div class="section-header">
                     <div class="icon-badge"><i class="fa-solid fa-user-shield"></i></div>
@@ -556,7 +631,6 @@
                 </div>
                 <div class="rules-grid">
                     
-                    <!-- КАРТОЧКА DM -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="dm deathmatch дм дезматч убийство без причины">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -584,7 +658,6 @@
                         </div>
                     </div>
 
-                    <!-- КАРТОЧКА RDM -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="rdm random deathmatch рдм массовое убийство">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -612,7 +685,6 @@
                         </div>
                     </div>
 
-                    <!-- КАРТОЧКА VDM -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="vdm vehicle deathmatch вдм машина таран">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -640,7 +712,6 @@
                         </div>
                     </div>
 
-                    <!-- КАРТОЧКА PG -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="pg powergaming пг преувеличение супергерой">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -668,7 +739,6 @@
                         </div>
                     </div>
 
-                    <!-- КАРТОЧКА MG -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="mg metagaming мг чат реальный мир">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -696,7 +766,6 @@
                         </div>
                     </div>
 
-                    <!-- КАРТОЧКА Non-RP -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="non-rp нон рп уход от погони починка на ходу">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -724,7 +793,6 @@
                         </div>
                     </div>
 
-                    <!-- КАРТОЧКА Non-RP Cuff -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="non-rp cuff нон рп куфф арест без отыгровки наручники в беге">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -738,13 +806,13 @@
                         </div>
                         <div class="card-expanded-content">
                             <div class="card-expanded-inner">
-                                <p class="rule-desc">Надевание наручников на подозреваемого без текстовой/голосовой отыгровки, задержание во время быстрого бега или без видимой на то причины.</p>
+                                <p class="rule-desc">Надевание наручников подозреваемому без текстовой или голосовой отыгровки, задерживание в беге или без весомой причины.</p>
                                 <div class="card-action-bar">
                                     <div class="punish-badge">
                                         <span class="punish-label">Наказание администрации</span>
-                                        <span class="punish-text">Предупреждение (Варн) / Кик / Джайл копу</span>
+                                        <span class="punish-text">Предупреждение (Варн) / Кик со службы</span>
                                     </div>
-                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('п.п 1.7 Non-RP Cuff', 'Задержание наручниками без РП отыгровок или в беге. Наказание: Варн / Кик.')" title="Скопировать">
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('п.п 1.7 Non-RP Cuff', 'Задержание подозреваемого без РП отыгровок или в беге. Наказание: Варн / Кик.')" title="Скопировать">
                                         <i class="fa-regular fa-copy"></i>
                                     </button>
                                 </div>
@@ -752,7 +820,6 @@
                         </div>
                     </div>
 
-                    <!-- КАРТОЧКА Voice Chat Rules -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="voice chat войс чат микрофон музыка крики крик в микро">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -766,11 +833,11 @@
                         </div>
                         <div class="card-expanded-content">
                             <div class="card-expanded-inner">
-                                <p class="rule-desc">Использование голосового чата не по назначению: воспроизведение музыки, создание громких помех (шумов), истошные крики в микрофон.</p>
+                                <p class="rule-desc">Использование голосового чата для трансляции музыки, выкрикивания оскорблений, создания шумов или порчи атмосферы игры.</p>
                                 <div class="card-action-bar">
                                     <div class="punish-badge">
                                         <span class="punish-label">Наказание администрации</span>
-                                        <span class="punish-text">Блокировка войса (Мут) на 15 - 30 минут</span>
+                                        <span class="punish-text">Блокировка войса (Мут) от 15 до 30 минут</span>
                                     </div>
                                     <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('п.п 1.8 Voice Rules', 'Помехи, музыка или крики в войс-чат. Наказание: Мут войса на 15-30 минут.')" title="Скопировать">
                                         <i class="fa-regular fa-copy"></i>
@@ -780,7 +847,6 @@
                         </div>
                     </div>
 
-                    <!-- КАРТОЧКА Non-RP Clothing -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="non-rp clothing нон рп одежда скин форма копа баганый скин">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -794,13 +860,67 @@
                         </div>
                         <div class="card-expanded-content">
                             <div class="card-expanded-inner">
-                                <p class="rule-desc">Ношение гражданскими формы государственных структур (полиции, МЧС, медиков), использование багнутых, невидимых или нереалистичных элементов скина.</p>
+                                <p class="rule-desc">Использование багнутых невидимых элементов одежды, либо ношение формы спецслужб гражданскими лицами.</p>
                                 <div class="card-action-bar">
                                     <div class="punish-badge">
                                         <span class="punish-label">Наказание администрации</span>
-                                        <span class="punish-text">Устное предупреждение / Смена скина / Кик</span>
+                                        <span class="punish-text">Смена скина / Кик с сервера при отказе</span>
                                     </div>
-                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('п.п 1.9 Non-RP Clothes', 'Использование запрещенной одежды или багнутых скинов. Наказание: Смена скина / Кик.')" title="Скопировать">
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('п.п 1.9 Non-RP Clothes', 'Использование запрещенной одежды или баганых скинов. Наказание: Смена скина / Кик.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="db driveby дб стрельба из машины авто стрельба окна">
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-crosshairs"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">п.п 1.10</span>
+                                    <span class="front-title">DB (DriveBy)</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Стрельба из окон или водительского сиденья движущегося автомобиля по пешеходам без веской RP-тактики.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Наказание администрации</span>
+                                        <span class="punish-text">Кик / Наказание в КПЗ на 5 минут / Варн</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('п.п 1.10 DB', 'Стрельба из окон автомобиля. Наказание: Кик / Варн.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="leave rp лив рп офф ареста офф погони выход игры">
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">п.п 1.11</span>
+                                    <span class="front-title">Leave from RP</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Намеренный выход из игры (выключение ПК/игры) с целью избежать ареста, штрафа, допроса или РП-ситуации.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Наказание администрации</span>
+                                        <span class="punish-text">Блокировка (Бан) на срок от 1 до 3 дней</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('п.п 1.11 Leave RP', 'Выход из игры во избежание РП-процесса или ареста. Наказание: Бан от 1 до 3 дней.')" title="Скопировать">
                                         <i class="fa-regular fa-copy"></i>
                                     </button>
                                 </div>
@@ -811,15 +931,14 @@
                 </div>
             </div>
 
-            <!-- РАЗДЕЛ: УГОЛОВНЫЙ КОДЕКС -->
+            <!-- РАЗДЕЛ 2: УГОЛОВНЫЙ КОДЕКС -->
             <div class="section-block" data-category="ic">
                 <div class="section-header">
                     <div class="icon-badge"><i class="fa-solid fa-gavel"></i></div>
-                    <h2>2. Уголовный Кодекс Гамбурга (Законы для суда и полиции)</h2>
+                    <h2>2. Уголовный Кодекс Пальмаса (Законы для суда и полиции)</h2>
                 </div>
                 <div class="rules-grid">
 
-                    <!-- СТАТЬЯ 1.1 -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="статья 1.1 нападение драка избиение ст 1.1">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -847,8 +966,7 @@
                         </div>
                     </div>
 
-                    <!-- СТАТЬЯ 1.2 -->
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 1.2 вооруженное нападение стрельба ст 1.2">
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 1.2 вооруженное нападение стрельба ст 1.2 изъятие оружия вещей при себе">
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-gun"></i></div>
@@ -861,13 +979,13 @@
                         </div>
                         <div class="card-expanded-content">
                             <div class="card-expanded-inner">
-                                <p class="rule-desc">Применение огнестрельного или холодного оружия против мирных граждан, создание вооруженной угрозы жизни.</p>
+                                <p class="rule-desc">Применение огнестрельного или холодного оружия против мирных граждан, создание вооруженной угрозы жизни. Включает конфискацию запрещенного снаряжения.</p>
                                 <div class="card-action-bar">
                                     <div class="punish-badge">
                                         <span class="punish-label">Суд & Полиция</span>
-                                        <span class="punish-text">Штраф 5 000 € + арест на 8 минут</span>
+                                        <span class="punish-text">Штраф 5 000 € + арест на 8 минут + изъятие оружия и всех вещей при себе</span>
                                     </div>
-                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 1.2 УК (Вооруженное нападение)', 'Нападение с оружием. Штраф 5 000€ + арест на 8 минут.')" title="Скопировать">
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 1.2 УК (Вооруженное нападение)', 'Нападение с оружием. Штраф 5 000€ + арест на 8 мин + изъятие оружия и всего, что при нем.')" title="Скопировать">
                                         <i class="fa-regular fa-copy"></i>
                                     </button>
                                 </div>
@@ -875,8 +993,7 @@
                         </div>
                     </div>
 
-                    <!-- СТАТЬЯ 1.3 -->
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 1.3 убийство лишение жизни ст 1.3">
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 1.3 убийство лишение жизни ст 1.3 пальмас">
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-skull-crossbones"></i></div>
@@ -889,13 +1006,13 @@
                         </div>
                         <div class="card-expanded-content">
                             <div class="card-expanded-inner">
-                                <p class="rule-desc">Особо тяжкое преступление — умышленное лишение жизни человека на территории Гамбурга.</p>
+                                <p class="rule-desc">Особо тяжкое преступление — умышленное лишение жизни человека на территории Пальмаса. Сопровождается обыском и конфискацией.</p>
                                 <div class="card-action-bar">
                                     <div class="punish-badge">
                                         <span class="punish-label">Суд & Полиция</span>
-                                        <span class="punish-text">Штраф 8 000 € + изъятие оружейных лицензий</span>
+                                        <span class="punish-text">Штраф 8 000 € + макс. срок + аннулирование лицензий + изъятие оружия и вещей при себе</span>
                                     </div>
-                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 1.3 УК (Убийство)', 'Лишение жизни. Штраф 8 000€, макс. арест и отзыв лицензии.')" title="Скопировать">
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 1.3 УК (Убийство)', 'Лишение жизни в Пальмасе. Штраф 8 000€, макс. арест, отзыв лицензии и конфискация всех вещей.')" title="Скопировать">
                                         <i class="fa-regular fa-copy"></i>
                                     </button>
                                 </div>
@@ -903,27 +1020,26 @@
                         </div>
                     </div>
 
-                    <!-- СТАТЬЯ 1.4 -->
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 1.4 похищение заложники ст 1.4">
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 1.5 насилие издевательство жестокость ст 1.5">
                         <div class="card-main-header">
                             <div class="header-left">
-                                <div class="bubble-icon"><i class="fa-solid fa-people-arrows"></i></div>
+                                <div class="bubble-icon"><i class="fa-solid fa-shield-heart"></i></div>
                                 <div class="title-block">
-                                    <span class="front-code">ст. 1.4 УК</span>
-                                    <span class="front-title">Похищение</span>
+                                    <span class="front-code">ст. 1.5 УК</span>
+                                    <span class="front-title">Насилие</span>
                                 </div>
                             </div>
                             <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
                         </div>
                         <div class="card-expanded-content">
                             <div class="card-expanded-inner">
-                                <p class="rule-desc">Незаконное удержание лиц против их воли, связывание, лишение свободы перемещения, требование выкупа.</p>
+                                <p class="rule-desc">Любая форма физического, психологического насилия, умышленное издевательство над игроком или жестокое обращение с задержанным лицом.</p>
                                 <div class="card-action-bar">
                                     <div class="punish-badge">
-                                        <span class="punish-label">Суд & Полиция</span>
-                                        <span class="punish-text">Штраф 6 500 € + арест на 8 минут</span>
+                                        <span class="punish-label">Суд & Полиция / Админ</span>
+                                        <span class="punish-text">Штраф 6 000 € + арест на 6 минут / Бан до 3-х дней при грубом нарушении</span>
                                     </div>
-                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 1.4 УК (Похищение)', 'Взятие в заложники. Штраф 6 500€ + арест на 8 минут.')" title="Скопировать">
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 1.5 УК (Насилие)', 'Проявление жестокости и насилия. Штраф 6 000€ + арест.')" title="Скопировать">
                                         <i class="fa-regular fa-copy"></i>
                                     </button>
                                 </div>
@@ -931,91 +1047,6 @@
                         </div>
                     </div>
 
-                    <!-- СТАТЬЯ 2.1 -->
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 2.1 угон машины кража авто ст 2.1">
-                        <div class="card-main-header">
-                            <div class="header-left">
-                                <div class="bubble-icon"><i class="fa-solid fa-key"></i></div>
-                                <div class="title-block">
-                                    <span class="front-code">ст. 2.1 УК</span>
-                                    <span class="front-title">Угон ТС</span>
-                                </div>
-                            </div>
-                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
-                        </div>
-                        <div class="card-expanded-content">
-                            <div class="card-expanded-inner">
-                                <p class="rule-desc">Взлом или неправомерное завладение любым автомобилем без разрешения его официального владельца.</p>
-                                <div class="card-action-bar">
-                                    <div class="punish-badge">
-                                        <span class="punish-label">Суд & Полиция</span>
-                                        <span class="punish-text">Штраф 3 000 € + арест на 5 минут</span>
-                                    </div>
-                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 2.1 УК (Угон ТС)', 'Незаконное завладение авто. Штраф 3 000€ + арест на 5 минут.')" title="Скопировать">
-                                        <i class="fa-regular fa-copy"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- СТАТЬЯ 2.2 -->
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 2.2 ограбление кража банкомат ст 2.2">
-                        <div class="card-main-header">
-                            <div class="header-left">
-                                <div class="bubble-icon"><i class="fa-solid fa-vault"></i></div>
-                                <div class="title-block">
-                                    <span class="front-code">ст. 2.2 УК</span>
-                                    <span class="front-title">Ограбление</span>
-                                </div>
-                            </div>
-                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
-                        </div>
-                        <div class="card-expanded-content">
-                            <div class="card-expanded-inner">
-                                <p class="rule-desc">Хищение государственного или частного имущества, кража денег из банкоматов, взлом касс магазинов.</p>
-                                <div class="card-action-bar">
-                                    <div class="punish-badge">
-                                        <span class="punish-label">Суд & Полиция</span>
-                                        <span class="punish-text">Штраф 4 500 € + арест на 6 минут + изъятие вещей</span>
-                                    </div>
-                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 2.2 УК (Ограбление)', 'Кража или ограбление. Штраф 4 500€ + арест на 6 минут.')" title="Скопировать">
-                                        <i class="fa-regular fa-copy"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- СТАТЬЯ 2.3 -->
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 2.3 порча имущества таран зданий ст 2.3">
-                        <div class="card-main-header">
-                            <div class="header-left">
-                                <div class="bubble-icon"><i class="fa-solid fa-hammer"></i></div>
-                                <div class="title-block">
-                                    <span class="front-code">ст. 2.3 УК</span>
-                                    <span class="front-title">Порча маш.</span>
-                                </div>
-                            </div>
-                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
-                        </div>
-                        <div class="card-expanded-content">
-                            <div class="card-expanded-inner">
-                                <p class="rule-desc">Умышленное повреждение или уничтожение чужих автомобилей, государственной мебели или инфраструктурных объектов города.</p>
-                                <div class="card-action-bar">
-                                    <div class="punish-badge">
-                                        <span class="punish-label">Суд & Полиция</span>
-                                        <span class="punish-text">Штраф 2 500 € + полная оплата ремонта пострадавшему</span>
-                                    </div>
-                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 2.3 УК (Порча имущества)', 'Порча авто/зданий. Штраф 2 500€ + оплата ремонта.')" title="Скопировать">
-                                        <i class="fa-regular fa-copy"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- СТАТЬЯ 3.1 -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="статья 3.1 неподчинение копам полиции ст 3.1">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -1043,36 +1074,7 @@
                         </div>
                     </div>
 
-                    <!-- СТАТЬЯ 3.2 -->
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 3.2 побег погоня скрылся ст 3.2">
-                        <div class="card-main-header">
-                            <div class="header-left">
-                                <div class="bubble-icon"><i class="fa-solid fa-person-running"></i></div>
-                                <div class="title-block">
-                                    <span class="front-code">ст. 3.2 УК</span>
-                                    <span class="front-title">Побег</span>
-                                </div>
-                            </div>
-                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
-                        </div>
-                        <div class="card-expanded-content">
-                            <div class="card-expanded-inner">
-                                <p class="rule-desc">Попытка скрыться на машине или бегом от преследования, сбежать в наручниках или из-под стражи во время судебного заседания.</p>
-                                <div class="card-action-bar">
-                                    <div class="punish-badge">
-                                        <span class="punish-label">Суд & Полиция</span>
-                                        <span class="punish-text">Штраф 4 000 € + увеличение ареста до максимального срока</span>
-                                    </div>
-                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 3.2 УК (Побег)', 'Побег во время задержания или суда. Штраф 4 000€ + максимальный арест.')" title="Скопировать">
-                                        <i class="fa-regular fa-copy"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- СТАТЬЯ 3.3 -->
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 3.3 нелегальное оружие оружие без лицензии ст 3.3">
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 3.3 нелегальное оружие оружие без лицензии ст 3.3 изъятие оружия вещей">
                         <div class="card-main-header">
                             <div class="header-left">
                                 <div class="bubble-icon"><i class="fa-solid fa-box-tissue"></i></div>
@@ -1085,41 +1087,13 @@
                         </div>
                         <div class="card-expanded-content">
                             <div class="card-expanded-inner">
-                                <p class="rule-desc">Ношение, хранение в багажнике автомобиля или открытое использование огнестрельного оружия без лицензии.</p>
+                                <p class="rule-desc">Ношение, хранение в багажнике автомобиля или открытое использование огнестрельного оружия без лицензии. Влечет полное изъятие вооружения и снаряжения.</p>
                                 <div class="card-action-bar">
                                     <div class="punish-badge">
                                         <span class="punish-label">Суд & Полиция</span>
-                                        <span class="punish-text">Штраф 5 500 € + полная конфискация оружия</span>
+                                        <span class="punish-text">Штраф 5 500 € + изъятие нелегального оружия и всего, что находится при задержанном</span>
                                     </div>
-                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 3.3 УК (Нелегальное оружие)', 'Хранение оружия без лицензии. Штраф 5 500€ + конфискация.')" title="Скопировать">
-                                        <i class="fa-regular fa-copy"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- СТАТЬЯ 3.4 -->
-                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 3.4 оскорбление власти судьи копов ст 3.4">
-                        <div class="card-main-header">
-                            <div class="header-left">
-                                <div class="bubble-icon"><i class="fa-solid fa-face-angry"></i></div>
-                                <div class="title-block">
-                                    <span class="front-code">ст. 3.4 УК</span>
-                                    <span class="front-title">Оскорбление</span>
-                                </div>
-                            </div>
-                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
-                        </div>
-                        <div class="card-expanded-content">
-                            <div class="card-expanded-inner">
-                                <p class="rule-desc">Нецензурные выражения, явная провокация или хамство в отношении судей, офицеров полиции, медиков или пожарных.</p>
-                                <div class="card-action-bar">
-                                    <div class="punish-badge">
-                                        <span class="punish-label">Суд & Полиция</span>
-                                        <span class="punish-text">Денежный штраф в размере 3 500 €</span>
-                                    </div>
-                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 3.4 УК (Оскорбление власти)', 'Оскорбление сотрудника при исполнении. Штраф 3 500€.')" title="Скопировать">
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 3.3 УК (Нелегальное оружие)', 'Оружие без лицензии. Штраф 5 500€ + полное изъятие оружия и всех вещей при себе.')" title="Скопировать">
                                         <i class="fa-regular fa-copy"></i>
                                     </button>
                                 </div>
@@ -1130,15 +1104,14 @@
                 </div>
             </div>
 
-            <!-- РАЗДЕЛ: ДОРОЖНЫЙ КОДЕКС -->
+            <!-- РАЗДЕЛ 3: ДОРОЖНЫЙ КОДЕКС -->
             <div class="section-block" data-category="road">
                 <div class="section-header">
                     <div class="icon-badge"><i class="fa-solid fa-car-side"></i></div>
-                    <h2>3. Дорожный Кодекс Гамбурга (Административный)</h2>
+                    <h2>3. Дорожный Кодекс Пальмаса (ПДД)</h2>
                 </div>
                 <div class="rules-grid">
 
-                    <!-- СТАТЬЯ 4.1 -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.1 скорость опасная езда дрифт ст 4.1">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -1166,7 +1139,6 @@
                         </div>
                     </div>
 
-                    <!-- СТАТЬЯ 4.2 -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.2 встречка тротуар ст 4.2">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -1194,7 +1166,6 @@
                         </div>
                     </div>
 
-                    <!-- СТАТЬЯ 4.3 -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.3 парковка в неположенном ст 4.3">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -1222,7 +1193,6 @@
                         </div>
                     </div>
 
-                    <!-- СТАТЬЯ 4.4 -->
                     <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.4 спецсигналы мигалки сирена ст 4.4">
                         <div class="card-main-header">
                             <div class="header-left">
@@ -1250,18 +1220,234 @@
                         </div>
                     </div>
 
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.5 неисправное тс фары ночь разбито авто сломано ст 4.5">
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-wrench"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 4.5 ДК</span>
+                                    <span class="front-title">Неисправное ТС</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Управление ТС с выключенными фарами в темное время суток или езда на полностью уничтоженном (дымящемся) кузове автомобиля.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Административный штраф</span>
+                                        <span class="punish-text">Штраф 1 200 € + Эвакуация на штрафстоянку</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 4.5 ДК (Неисправное ТС)', 'Езда на сломанном авто или без фар. Штраф 1 200€.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.6 без номеров номера нечитаемые знаки ст 4.6">
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-id-card"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 4.6 ДК</span>
+                                    <span class="front-title">Без номеров</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Управление транспортным средством без установленных государственных регистрационных номеров или с намеренно загрязненными знаками.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Административный штраф</span>
+                                        <span class="punish-text">Штраф 1 500 € + предупреждение о необходимости монтажа</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 4.6 ДК (Без номеров)', 'Управление авто без гос. номеров. Штраф 1 500€.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.7 скрытие дтп скрылся аварии авария ст 4.7">
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-car-crash"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 4.7 ДК</span>
+                                    <span class="front-title">Скрытие с ДТП</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Попытка скрыться или уехать с места дорожно-транспортного происшествия без составления мирного протокола или ожидания патрульных офицеров.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Административный штраф</span>
+                                        <span class="punish-text">Штраф 3 500 € + Эвакуация авто на штрафку</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 4.7 ДК (Скрытие с ДТП)', 'Побег с места совершенной аварии. Штраф 3 500€.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 4.8 без прав вождение права забрали ст 4.8">
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-address-card"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 4.8 ДК</span>
+                                    <span class="front-title">Езда без прав</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Управление автомобилем без предварительной сдачи практического экзамена или вождение после судебного лишения прав.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Административный штраф</span>
+                                        <span class="punish-text">Штраф 2 500 € + Эвакуация ТС на штрафстоянку</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 4.8 ДК (Езда без прав)', 'Управление ТС без водительского удостоверения. Штраф 2 500€.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- РАЗДЕЛ 4: АДМИНИСТРАТИВНЫЙ КОДЕКС (АК) -->
+            <div class="section-block" data-category="ac">
+                <div class="section-header">
+                    <div class="icon-badge"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h2>4. Административный Кодекс (АК) — Общественный порядок Пальмаса</h2>
+                </div>
+                <div class="rules-grid">
+
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 5.1 тишина ночное время крики шум ст 5.1">
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-volume-xmark"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 5.1 АК</span>
+                                    <span class="front-title">Тишина</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Нарушение тишины и общественного покоя граждан в ночной период времени (использование гудков авто, крики).</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Административный штраф</span>
+                                        <span class="punish-text">Денежное взыскание в размере 1 200 €</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 5.1 АК (Тишина)', 'Нарушение общественного покоя ночью. Штраф 1 200€.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 5.2 хулиганство ложные вызовы полиция медики мчс ст 5.2 пальмас">
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-phone-slash"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 5.2 АК</span>
+                                    <span class="front-title">Хулиганство</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Мелкое хулиганство на улицах Пальмаса, включая шуточные или заведомо ложные вызовы служб спасения через телефон.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Административный штраф</span>
+                                        <span class="punish-text">Штраф 2 000 € + арест до уплаты штрафа</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 5.2 АК (Хулиганство)', 'Хулиганство и ложные вызовы спецслужб. Штраф 2 000€.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-card" onclick="toggleCard(this)" data-search="статья 5.3 незаконная торговля продажи ларек лавка ст 5.3">
+                        <div class="card-main-header">
+                            <div class="header-left">
+                                <div class="bubble-icon"><i class="fa-solid fa-store-slash"></i></div>
+                                <div class="title-block">
+                                    <span class="front-code">ст. 5.3 АК</span>
+                                    <span class="front-title">Нелегал. Торговля</span>
+                                </div>
+                            </div>
+                            <div class="card-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+                        <div class="card-expanded-content">
+                            <div class="card-expanded-inner">
+                                <p class="rule-desc">Организация уличной торговли, установка ларьков, палаток или столиков продаж без согласования с Мэрией и судом.</p>
+                                <div class="card-action-bar">
+                                    <div class="punish-badge">
+                                        <span class="punish-label">Административный штраф</span>
+                                        <span class="punish-text">Штраф 3 000 € + демонтаж незаконной торговой точки</span>
+                                    </div>
+                                    <button class="copy-btn" onclick="event.stopPropagation(); copyLaw('Статью 5.3 АК (Нелегальная торговля)', 'Продажи товаров без соответствующей лицензии. Штраф 3 000€.')" title="Скопировать">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
         </div>
 
-        <!-- Подвал -->
+        <div class="miranda-wrapper">
+            <div class="miranda-header">
+                <i class="fa-solid fa-bullhorn"></i>
+                <h3>Правило Миранды (Обязательно для полиции)</h3>
+            </div>
+            <div class="miranda-body" id="mirandaText">
+                "Вы имеете право хранить молчание. Всё, что вы скажете, может и будет использовано против вас в суде. Ваш адвокат может присутствовать при допросе. Если вы не можете оплатить услуги адвоката, он будет предоставлен вам государством. Вы понимаете свои права?"
+            </div>
+            <div class="miranda-footer">
+                <div class="miranda-hint">
+                    <i class="fa-solid fa-info-circle"></i> Зачитывается задержанному сразу после надевания наручников.
+                </div>
+                <button class="miranda-copy-btn" onclick="copyMiranda()">
+                    <i class="fa-regular fa-copy"></i> Скопировать Миранду
+                </button>
+            </div>
+        </div>
+
         <footer>
-            <p>&copy; 2026 <strong>PALMAS RP</strong>. Все права защищены. Разработано специально для RP-сообщества в Emergency Hamburg.</p>
+            <p>&copy; 2026 <strong>PALMAS RP</strong>. Все права защищены. Разработано специально для RP-сообщества Palmas RP в Emergency Hamburg.</p>
         </footer>
     </div>
 
-    <!-- Тост-уведомление -->
     <div class="toast" id="copyToast">
         <i class="fa-solid fa-circle-check"></i>
         <div>
@@ -1270,13 +1456,24 @@
         </div>
     </div>
 
-    <!-- Скрипты -->
     <script>
-        /* 1. Копирование законов для игры */
+        /* Копирование законов */
         function copyLaw(title, details) {
             const textToCopy = `[PALMAS RP] Суд/Полиция: Нарушено ${title}. Информация: ${details}`;
+            executeCopy(textToCopy);
+        }
+
+        /* Копирование правила Миранды */
+        function copyMiranda() {
+            const text = document.getElementById('mirandaText').innerText.trim();
+            const textToCopy = `[PALMAS RP] Офицер: ${text}`;
+            executeCopy(textToCopy);
+        }
+
+        /* Общая функция для копирования */
+        function executeCopy(text) {
             const tempInput = document.createElement('textarea');
-            tempInput.value = textToCopy;
+            tempInput.value = text;
             document.body.appendChild(tempInput);
             tempInput.select();
             
@@ -1294,7 +1491,7 @@
             }
         }
 
-        /* 2. Раскрытие карточки облачка (Аккордеон) */
+        /* Раскрытие карточки */
         function toggleCard(card) {
             if (card.classList.contains('active')) {
                 card.classList.remove('active');
@@ -1303,10 +1500,9 @@
             }
         }
 
-        /* 3. Реалистичный снегопад */
+        /* Снегопад */
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
-
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
 
@@ -1317,7 +1513,6 @@
 
         const numFlakes = 75;
         const flakes = [];
-
         for (let i = 0; i < numFlakes; i++) {
             flakes.push({
                 x: Math.random() * width,
@@ -1346,15 +1541,8 @@
                 const f = flakes[i];
                 f.y += f.speed;
                 f.x += f.wind;
-
                 if (f.y > height) {
-                    flakes[i] = {
-                        x: Math.random() * width,
-                        y: -10,
-                        r: f.r,
-                        speed: f.speed,
-                        wind: f.wind
-                    };
+                    flakes[i] = { x: Math.random() * width, y: -10, r: f.r, speed: f.speed, wind: f.wind };
                 }
                 if (f.x > width) f.x = 0;
                 else if (f.x < 0) f.x = width;
@@ -1366,11 +1554,9 @@
             requestAnimationFrame(runAnimation);
         }
         
-        window.onload = function() {
-            runAnimation();
-        };
+        window.onload = function() { runAnimation(); };
 
-        /* 4. Поиск и фильтрация */
+        /* Поиск и фильтрация */
         const searchInput = document.getElementById('searchInput');
         const tabBtns = document.querySelectorAll('.tab-btn');
         const sections = document.querySelectorAll('.section-block');
@@ -1382,8 +1568,8 @@
             sections.forEach(section => {
                 const sectionCategory = section.getAttribute('data-category');
                 let hasVisibleCards = false;
-
                 const cards = section.querySelectorAll('.rule-card');
+
                 cards.forEach(card => {
                     const searchText = card.getAttribute('data-search').toLowerCase();
                     const matchesSearch = searchText.includes(query);
@@ -1394,7 +1580,7 @@
                         hasVisibleCards = true;
                     } else {
                         card.style.display = 'none';
-                        card.classList.remove('active'); // закрываем при скрытии
+                        card.classList.remove('active');
                     }
                 });
 
@@ -1407,7 +1593,6 @@
         }
 
         searchInput.addEventListener('input', filterRules);
-
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 tabBtns.forEach(b => b.classList.remove('active'));
